@@ -13,8 +13,8 @@ class Ranker {
 public:
     // 比较函数，最小堆
     struct cmpBlock {
-        bool operator()(Block* left, Block* right) const {
-            return left->data[left->idx] > right->data[right->idx];
+        bool operator()(BlockListNode* left, BlockListNode* right) const {
+            return left->block[left->idx] > right->block[right->idx];
         }
     };
 
@@ -25,7 +25,7 @@ public:
     void Rank();
 
 private:
-    std::priority_queue<Block*, std::vector<Block*>, cmpBlock> m_pq;
+    std::priority_queue<BlockListNode*, std::vector<BlockListNode*>, cmpBlock> m_pq;
     std::vector<Partition*> m_partition_vec;
 };
 

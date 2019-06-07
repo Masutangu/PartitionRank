@@ -21,9 +21,9 @@ void Ranker::Rank() {
     }
 
     while (!m_pq.empty()) {
-        Block *b = m_pq.top();
+        BlockListNode *b = m_pq.top();
         m_pq.pop();
-        result.push_back(b->data[b->idx]);
+        result.push_back(b->block[b->idx]);
 
         if (b->idx + 1 >= DATA_SIZE) {
             // 这个 block 的数据已经读完，读所属 partition 中下一个 block 的数据

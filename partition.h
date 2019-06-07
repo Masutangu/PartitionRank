@@ -7,11 +7,13 @@
 
 const int DATA_SIZE = 10;
 
-// 数据块
-struct Block {
-    int data[DATA_SIZE]; // 有序数组
-    int idx; // 当前读取 data 数组中的偏移下标值
-    Block* next; // 所属分区的下一个数据块
+typedef int Block[DATA_SIZE]; // Block：有序数组
+
+// Block 链表节点
+struct BlockListNode {
+    Block block;
+    int idx; // 当前读取 block 中数据的偏移下标值
+    BlockListNode* next; // 所属分区的下一个数据块
 };
 
 /*
@@ -19,7 +21,7 @@ struct Block {
  * Partition: | Block -> Block -> Block|
  */
 struct Partition {
-    Block* block_list;
+    BlockListNode* block_list;
 };
 
 
